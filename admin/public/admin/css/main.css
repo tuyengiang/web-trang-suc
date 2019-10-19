@@ -1,0 +1,137 @@
+table, td, th, thead, tbody {
+    color: #000;
+}
+
+/**slider**/
+.sider-separator {
+    padding: 13px 15px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.sidebar-footer {
+    background: transparent !important;
+}
+
+.sidebar-footer a {
+    background: transparent !important;
+    color: #fff;
+}
+
+label {
+    color: #000 !important;
+}
+
+.required-text {
+    color: #ff3333;
+}
+
+h2.title-admin {
+    margin-left: -10px;
+    padding: 10px 0 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: xdev, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    color: #000 !important;
+}
+
+.comment-view {
+    text-align: right;
+    padding: 20px 0 0 0;
+    padding-right: 0px !important;
+}
+
+.x_title h2 {
+    color: #000 !important;
+}
+
+/**author**/
+.author-icon {
+    width: 90px;
+    height: 90px;
+    background: #00a65a !important;
+    float: left;
+    line-height: 90px;
+    text-align: center;
+    font-size: 38px;
+    color: #fff;
+}
+
+.author-name {
+    height: 90px;
+    float: left;
+    width: 56%;
+    margin-left: 10px !important;
+    color: #000;
+    padding-top: 10px;
+}
+
+.author-avatar {
+    text-align: center;
+}
+
+.author-avatar img {
+    width: 100px;
+    height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.author-content h3 {
+    margin: 15px 0 10px 0 !important;
+    display: block;
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+}
+
+.author-content .infomation h4 {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #eee;
+    color: #000;
+    font-weight: 700;
+}
+
+.author-content .infomation ul li {
+    height: 30px;
+    line-height: 30px;
+    color: #000;
+}
+
+.author-content .infomation ul {
+    padding-left: 0px !important;
+    list-style: none;
+}
+
+/*8form**/
+.form-filter {
+    width: 30%;
+    float: right;
+    margin: 10px 0 10px 0;
+}
+
+.input-filler {
+    width: 81% !important;
+    float: left;
+    border-radius: 3px 0 0 3px !important;
+}
+
+.btn-filler {
+    border-radius: 0px 3px 3px 0 !important;
+}
+
+.nav_title {
+    background: transparent !important;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .form-filter {
+        width: 80%;
+    }
+}
+

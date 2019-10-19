@@ -1,0 +1,54 @@
+<?php
+if ($_GET['action'] == 'create') {
+    $title = "Thêm bài viết mới";
+} else if ($_GET['action'] == 'edit') {
+    $title = "Sửa bài viết";
+}
+include "../layouts/header-admin.php";
+include "../layouts/menu-admin.php";
+?>
+<div class="col-md-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                <?php
+                if ($_GET['action'] == 'create') {
+                    echo "Thêm bài viết mới";
+                } else if ($_GET['action'] == 'edit') {
+                    echo "Sửa bài viết";
+                }
+                ?>
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <?php
+                if ($_GET['action'] == 'create') {
+                    include 'create.php';
+                } else if ($_GET['action'] == 'edit') {
+                    include 'edit.php';
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include "../layouts/footer.php"; ?>
