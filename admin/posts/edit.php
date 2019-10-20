@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     if (empty($thongbao)) {
         if (move_uploaded_file($images_tmp, $path)) {
-            $sql = "UPDATE posts SET title='{$title}',excerpt='{$excerpt}',content='{$content}',images='{$anh}',category_id='{$category_id}',is_active='{$is_active}',slug='{$slug}' WHERE id_post='{$id}'";
+            $sql = "UPDATE posts SET title='{$title}',excerpt='{$excerpt}',content='{$content}',images='{$anh}',category_id='{$category_id}',is_active='{$is_active}',slug='{$slug}',user_id='{$id_user}' WHERE id_post='{$id}'";
             $query = mysqli_query($conn, $sql);
             if ($query) {
                 echo "<script>alert('Sửa bài viết thành công !!!');</script>";

@@ -29,7 +29,7 @@ if (isset($_SESSION['email'])) {
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="/" class="site_title"><i class="fa fa-diamond"></i> <span>Admin</span></a>
+            <a href="<?php echo curPageURL(); ?>" class="site_title"><span>Admin</span></a>
         </div>
         <div class="clearfix"></div>
         <!-- menu profile quick info -->

@@ -53,7 +53,7 @@ endif;
             </div>
             <div class="row">
                 <div class="col-md-12 col-xs-12 col-sm-12 col-xs-12">
-                    <table class="table table-striped">
+                    <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid">
                         <thead>
                         <tr>
                             <th>Hình ảnh</th>

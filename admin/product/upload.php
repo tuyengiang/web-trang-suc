@@ -25,13 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $thongbao["hinhanh"] = "Mời chọn file ảnh !!!";
         } else {
             $check_images = array("jpg", "png", "jpeg", "gif");
-            $max_size = 4000000;
             if (in_array($ext, $check_images) === false) {
                 $thongbao["hinhanh"] = "Files ảnh không đúng định dạng jpg,png,jpeg,gif !!!";
 
-            }
-            if ($images_size > $max_size) {
-                $thongbao["hinhanh"] = "Files ảnh kích thước quá lớn <4MB !!!";
             }
         }
         if (empty($thongbao)) {

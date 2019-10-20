@@ -1,7 +1,7 @@
 <?php $title = "Danh sách bài viết";
 include "../layouts/header-admin.php";
 include "../layouts/menu-admin.php";
-if ($_SERVER['REQUEST_METHOD'] =="GET" && isset($_GET['delete'])):
+if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['delete'])):
     $delete = $_GET['delete'];
     $sql = "DELETE FROM posts WHERE id_post='{$delete}'";
     $query = mysqli_query($conn, $sql);
@@ -51,10 +51,10 @@ endif;
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <a class="btn btn-primary"
                        href="<?php echo curPageURL(); ?>admin/posts/_form.php?action=create"><i
-                            class="fa fa-plus"></i> Thêm bài viết mới</a>
+                                class="fa fa-plus"></i> Thêm bài viết mới</a>
                 </div>
                 <div class="col-md-12 col-xs-12 col-sm-12 col-xs-12">
-                    <table class="table table-striped" style="margin-top:10px;">
+                    <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" style="margin-top:10px;">
                         <thead>
                         <tr>
                             <th>Hình ảnh</th>
@@ -81,7 +81,7 @@ endif;
                                         </div>
                                     </td>
                                     <td><?php echo $row['title']; ?></td>
-                                    <td><?php echo $row['slug'];?></td>
+                                    <td><?php echo $row['slug']; ?></td>
                                     <td>
                                         <?php
                                         $id_cate = $row['category_id'];
@@ -100,7 +100,7 @@ endif;
                                         }
                                         ?>
                                     </td>
-                                    <td>Giảng</td>
+                                    <td><?php echo $row['user_id']; ?></td>
                                     <td>
                                         <a style="float: left;"
                                            href="<?php echo curPageURL(); ?>admin/posts/_form.php?action=edit&id=<?php echo $row['id_post']; ?>"
@@ -110,7 +110,7 @@ endif;
                                                    name="delete">
                                             <button type="submit" name="delete-btn" class="btn btn-danger"
                                                     onclick="return confirm('Bạn muốn xóa bài viết này không ?'); "><i
-                                                    class="fa fa-trash"></i></button>
+                                                        class="fa fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

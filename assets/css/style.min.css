@@ -109,15 +109,37 @@ section#header-menu .menu ul li a:hover > .sub-menu {
 }
 
 /**title**/
+.title-home h2:after {
+    border: 20px solid transparent;
+    border-left-color: #d92725;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    content: "";
+}
+
 .title-home h2 {
-    margin: 0px;
-    text-align: center;
-    font-weight: 700;
+    width: auto;
+    background: #d92725;
+    font-size: 16px;
+    position: relative;
+    margin: 0;
+    min-width: 227px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 40px;
+    padding-left: 20px;
+    display: inline-block;
     text-transform: uppercase;
-    color: #000;
-    font-size: 23px;
-    margin-bottom: 30px;
-    font-family: "Roboto", sans-serif;
+}
+
+.title-home {
+    margin-left: -2px;
+    margin-bottom: 20px;
+    margin-right: 0px;
+    background: #fff;
+    border: 3px double #d92725;
+    box-shadow: 0px 0px 1px #d92725;
 }
 
 /**footer**/
@@ -157,6 +179,7 @@ footer#footer .footer-top ul li {
     border: 1px solid #eee;
     position: relative;
     margin-bottom: 30px;
+    transition: 0.3s ease-in-out;
 }
 
 .box-product .product-avatar img {
@@ -166,7 +189,7 @@ footer#footer .footer-top ul li {
 }
 
 .box-product .product-avatar {
-    height: 200px;
+    height: 250px;
     width: 100%;
 }
 
@@ -182,13 +205,26 @@ footer#footer .footer-top ul li {
     font-family: "Roboto", sans-serif;
     color: #000;
     margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+
+.box-product:hover .price {
+    transition: 0.3s ease-in-out;
+    background: #D92725 !important;
+    color: #fff !important;
+}
+
+span.price-regular-under {
+    color: #000;
+    text-decoration: line-through;
 }
 
 .box-product .product-sumary {
-    padding: 10px;
+    padding: 15px 10px 15px 10px;
 }
 
 .box-product .price {
+    transition: 0.3s ease-in-out;
     padding: 5px 10px 5px 5px;
     text-align: center;
     border-top: 1px solid #eee;
@@ -230,4 +266,25 @@ section#breadcrumbs {
 section#breadcrumbs ul li {
     display: inline-block;
     padding: 5px !important;
+}
+
+/*tơp-bar-admin**/
+div#top-bar {
+    background: #333;
+}
+
+div#top-bar .top-bar-left ul li a {
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px !important;
+    display: block;
+}
+
+div#top-bar .top-bar-left ul li {
+    float: left;
+    padding: 5px 10px 5px 10px !important;
+}
+
+div#top-bar .top-bar-left ul li:hover {
+    background: rgba(255, 255, 255, 0.1);
 }

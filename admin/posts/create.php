@@ -32,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     if (empty($thongbao)) {
         if (move_uploaded_file($images_tmp, $path)) {
-            $sql = "INSERT INTO posts (title,excerpt,content,images,category_id,is_active,slug)
-					VALUES('{$title}','{$excerpt}','{$content}','{$anh}','{$category_id}','{$is_active}','{$slug}')
+            $sql = "INSERT INTO posts (title,excerpt,content,images,category_id,is_active,slug,user_id)
+					VALUES('{$title}','{$excerpt}','{$content}','{$anh}','{$category_id}','{$is_active}','{$slug}','{$id_user}')
 				";
             $query = mysqli_query($conn, $sql);
             if ($query) {

@@ -54,7 +54,7 @@ endif;
                                 class="fa fa-plus"></i> Thêm sản phẩm mới</a>
                 </div>
                 <div class="col-md-12 col-xs-12 col-sm-12 col-xs-12">
-                    <table class="table table-striped" style="margin-top:10px;">
+                    <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" style="margin-top:10px;">
                         <thead>
                         <tr>
                             <th>Hình ảnh</th>
@@ -86,7 +86,7 @@ endif;
                                     <td>
                                         <?php
                                         if ($row['price_sale'] != 0) {
-                                            echo number_format($row['price_sale'], '0', '.') . " VNĐ";
+                                            echo number_format($row['price_sale']) . " VNĐ";
                                         } else {
                                             echo "-";
                                         }
