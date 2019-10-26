@@ -16,9 +16,9 @@
                 <div class="footer-top">
                     <h2>Nhóm phát triển</h2>
                     <ul>
-                        <li><i class="fa fa-user"></i> Trương thị lệ</li>
-                        <li><i class="fa fa-user"></i> Trương thị lệ</li>
-                        <li><i class="fa fa-user"></i> Trương thị lệ</li>
+                        <li><i class="fa fa-user"></i> Trương Thị Lệ</li>
+                        <li><i class="fa fa-user"></i> Lại Thị Lệ Xuân</li>
+                        <li><i class="fa fa-user"></i> Nguyễn Việt Anh</li>
                     </ul>
                 </div>
             </div>

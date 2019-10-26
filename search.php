@@ -1,65 +1,98 @@
+<?php
+require_once('inc/ketnoi.php');
+$key = $_GET["s"];
+$title = "Tìm kiếm với từ khóa " . $key;
+
+?>
 <?php require_once("template/header.php"); ?>
-<?php require_once("template/top-header.php"); ?>
-<?php require_once("template/header-title.php") ?>
-<?php require_once("template/menu.php"); ?>
-<?php 
-	if(isset($_GET["tim-kiem"])){
-		if(isset($_GET["search"])){
-			$search=$_GET["search"];
-		}
-	}
- ?>
-
-<div class="main">
-	<?php require_once("template/main-left.php"); ?>
-	<div class="category-right">
-			
-			
-				<div class="title-list">
-					<div class="ti-td"><i class="fa fa-car"></i> Kết quả tìm kiếm:<font color="#ff5c00"> <?php echo $search ?></font></div>
-				</div><!--title-->
-				<?php
-					
-						$sql="SELECT * FROM product WHERE tensp LIKE '%$search%'";
-						$query=mysqli_query($conn,$sql);
-						$num=mysqli_num_rows($query);
-						if($num>0 && !empty($search)){
-							while($row=mysqli_fetch_array($query,MYSQLI_ASSOC)):
-				 ?>
-				 <div class="content">
-					<div class="content-img">
-						<img src="images/sanpham/<?php echo $row['hinhanh']; ?>">
-					</div><!--content-img-->
-
-					<div class="content-excerpt">
-						<div class="content-title">
-							<a href="single.php?id=<?php echo $row['masp']; ?>"><?php echo $row['tensp']; ?></a>
-						</div><!--content-title-->
-						<div class="content-cart">
-								Gía bán: <?php 
-
-									$s=$row["giaban"];
-									$s1=substr($s,0,3);
-									$s2=substr($s,4,3);
-									$s3=substr($s,6,3);
-									echo $s1. ".".$s2.".".$s3." vnđ";
-								?>
-									
-						</div><!--content-cảt-->
-						<div class="content-button">
-							<a href="cart/index.php?id=<?php echo $row['masp'];?>"><button class="btn-mua" name="mua-hang" style="width:50%;"><i class="fa fa-car"></i> Đặt xe</button></a>
-							<button type="submit" class="btn-mua" style="width:25%;background:white;color:red;border:1px solid #ddd;"><i class="fa fa-heart"></i></button>
-						</div><!--content-button-->
-					</div><!--content-excerpt-->
-				</div><!--content-->
-				 <?php 
-				 	endwhile; 
-				 	}else{
-				 		echo "Không tìm thấy sản phẩm bạn cần tìm !!! Mời bạn nhập lại sản phẩm bạn cần tìm !!!";
-				 	}
-				  ?>
-	</div>
-
-</div><!--main-->
-
-<?php require_once("template/bottom.php"); ?>
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="br">
+                    <ul>
+                        <li><a href="index.php"><i class="fa fa-home"></i></a></li>
+                        <li><i class="fa fa-angle-right"></i></li>
+                        <li><a href="">Tìm kiếm từ khóa : <b style="color:rgba(253, 29, 29, 1)"><?php echo $key; ?></b></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--breadcrumb-->
+<div class="category-product">
+    <div class="container">
+        <div class="col-md-3">
+            <?php include "sidebar/sidebar-product.php"; ?>
+        </div><!--sidevbar-->
+        <div class="col-md-9">
+            <div class="row">
+                <?php
+                $sql = "SELECT * FROM products WHERE title LIKE 'N%$key%'";
+                $query = mysqli_query($conn, $sql);
+                $num = mysqli_num_rows($query);
+                if ($num > 0 && !empty($search)) {
+                    while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)):
+                        ?>
+                        <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+                            <div class="box-product">
+                                <a href="<?php echo curPageURL(); ?>single.php?id=<?php echo $row['id_product']; ?>&taxonomy=product_cat">
+                                    <div class="box-product-avatar">
+                                        <img src="<?php echo curPageURL(); ?>assets/images/sanpham/<?php echo $row['images']; ?>"
+                                             alt="">
+                                        <?php if ($row['is_hot'] == 1): ?>
+                                            <div class="product-hot">
+                                                Hot
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="product-sumary">
+                                        <div class="product-title">
+                                            <a href="<?php echo curPageURL(); ?>single.php?id=<?php echo $row['id_product']; ?>&taxonomy=product_cat"
+                                               title="<?php echo $row['title']; ?>"><?php echo $row['title']; ?></a>
+                                            <div class="product-rate">
+                                                <p style="margin-bottom:0px!important;">
+                                                    <span class="icon-star-empty"></span>
+                                                    <span class="icon-star-empty"></span>
+                                                    <span class="icon-star-empty"></span>
+                                                    <span class="icon-star-empty"></span>
+                                                    <span class="icon-star-empty"></span>
+                                                </p>
+                                            </div>
+                                            <div class="product-price">
+                                                <?php
+                                                $sale = $row['price_sale'];
+                                                if ($sale == 0) {
+                                                    ?>
+                                                    <span class="price-regular">
+                                        <?php echo number_format($row['price']) . " VNĐ"; ?>
+                                        </span>
+                                                <?php } else { ?>
+                                                    <span class="price-sale">
+                                        <?php echo number_format($sale) . " VNĐ"; ?>
+                                        </span>
+                                                    <span class="price-regular-under">
+                                        <?php echo number_format($row['price']) . " VNĐ"; ?>
+                                        </span>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                        <div class="product-add-to-cart">
+                                            <a class="box-cart add_to_cart_button ajax_add_to_cart sessionAddCart"
+                                               href="<?php echo curPageURL(); ?>single.php?id=<?php echo $row['id_product']; ?>&taxonomy=product_cat">Xem
+                                                chi tiết</a>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    <?php endwhile;
+                } else {
+                    echo "Không có sản phẩm nào được tìm thấy !!!";
+                } ?>
+            </div>
+        </div><!--list-category-->
+    </div>
+</div>
+<?php require_once('template/footer.php'); ?>

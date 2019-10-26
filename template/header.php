@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="<?php echo curPageURL(); ?>assets/owl/dist/assets/owl.theme.default.css">
     <link rel="stylesheet" href="<?php echo curPageURL(); ?>assets/owl/dist/assets/owl.carousel.css">
     <script src="<?php echo curPageURL(); ?>assets/js/jquery.js"></script>
+    <script src="<?php echo curPageURL(); ?>assets/js/bootstrap.min.js"></script>
     <script src="<?php echo curPageURL(); ?>assets/js/jquery.bxslider.min.js"></script>
     <script src="<?php echo curPageURL(); ?>assets/js/wow.min.js"></script>
     <script src="<?php echo curPageURL(); ?>assets/owl/dist/owl.carousel.js"></script>
@@ -28,88 +29,74 @@
     </script>
 </head>
 <body>
-<?php if (isset($_SESSION['email'])): ?>
-    <div id="top-bar">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="top-bar-left">
-                        <ul>
-                            <li><a href="<?php echo curPageURL(); ?>admin/"><i class="fa fa-tachometer"></i> Trang quản
-                                    trị</a></li>
-                            <li><a href="<?php echo curPageURL(); ?>admin/posts/_form.php?action=create"><i
-                                            class="fa fa fa-clipboard"></i> Thêm bài viết</a></li>
-                            <li><a href="<?php echo curPageURL(); ?>admin/product/_form.php?action=create"><i
-                                            class="fa fa-product-hunt"></i> Thêm sản phẩm</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
 <header id="header">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-md-offset-4">
+            <div class="col-md-3">
                 <div class="logo-header">
                     <a href="/"><img src="<?php echo curPageURL(); ?>assets/images/logo/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="header-menu">
+                    <?php showCategories($categories); ?>
+                    <?php showCategoriesPost($categories1); ?>
+                </div>
+            </div><!--menu-->
+            <div class="col-md-2">
+                <div class="header-account">
+                    <div class="login"><i class="fa fa-user"></i></div>
+                    <div class="login-list">
+                        <ul>
+                            <?php if (isset($_SESSION['email'])) { ?>
+                                <li><a href="<?php echo curPageURL(); ?>admin/"><i class="fa fa-tachometer"></i>
+                                        Dashbroad</a></li>
+                                <li><a href="<?php echo curPageURL(); ?>admin/user/profile.php"><i
+                                                class="fa fa-user"></i> Thông tin của bạn</a></li>
+                                <li><a href="<?php echo curPageURL(); ?>admin/product/_form.php?action=create"><i
+                                                class="fa fa-plus"></i> Thêm sản phẩm</a></li>
+                                <li><a href="<?php echo curPageURL(); ?>admin/posts/_form.php?action=create"><i
+                                                class="fa fa-plus"></i> Thêm bài viết</a></li>
+                                <li><a href="<?php echo curPageURL(); ?>admin/logout.php"><i
+                                                class="fa fa-sign-out"></i> Đăng xuất</a></li>
+                            <?php } else { ?>
+                                <li><a href="dang-nhap.php"><i class="fa fa-sign-in "></i> Đăng nhập</a></li>
+                                <li><a href="dang-ky.php"><i class="fa fa-user"></i> Đăng ký</a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-cart">
+                    <a href="cart.php"><i class="fa fa-shopping-cart"></i> (0)</a>
                 </div>
             </div>
         </div>
     </div>
 </header>
-<section id="header-menu">
+<section id="header-main">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div style="clear:left;"></div>
-                <div class="menu">
+            <div class="col-md-9">
+                <div class="menu-summary">
                     <ul>
-                        <li><a href="index.php"><i class="fa fa-home"></i></a></li>
-                        <li><a href="gioi-thieu.php">Giới thiệu</a></li>
-                        <li><a href="#">Sản phẩm <i class="fa fa-angle-down"></i></a>
-                            <ul class="sub-menu">
-                                <?php
-                                $sql = "SELECT * FROM danhmuc";
-                                $query = mysqli_query($conn, $sql);
-                                while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)):
-                                    ?>
-                                    <li>
-                                        <a href="list-category.php?id=<?php echo $row['madanhmuc']; ?>"><?php echo $row['tendanhmuc']; ?></a>
-                                    </li>
-                                <?php endwhile; ?>
-                            </ul>
-                        </li>
-                        <li><a href="#">Mua xe <i class="fa fa-angle-down"></i></a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Bảng gía xe</a></li>
-                                <li><a href="#">Mua xe trả góp</a></li>
-                                <li><a href="#">Đăng ký lái thử</a></li>
-
-                            </ul>
-                        </li>
-                        <li><a href="#">Khuyến mại</a></li>
-                        <li><a href="#">Tin tức</a></li>
-                        <li><a href="lien-he.php">Liên hệ</a></li>
-                        <?php if (!isset($_SESSION['email'])): ?>
-                            <li><a href="dang-nhap.php">Đăng nhập</a></li>
-                            <li><a href="dang-ky.php">Đăng ký</a></li>
-                        <?php endif; ?>
-                        <li style="float:right;" id="click-search">
-                            <form>
-                                <input type="text" placeholder="Tìm kiếm..." class="input-s">
-                                <i class="fa fa-search"></i>
+                        <li><a href="tel:0358452011">HOTLINE: 0358.452.011</a></li>
+                        <li><a href="">Các hình thức thanh toán</a></li>
+                        <li><a href="">GIỎ HÀNG (っ ＾▿＾)💨</a></li>
+                        <li><a href="">Yêu thích</a></li>
+                        <li><a href="">Facebook</a></li>
+                    </ul>
                 </div>
-                </form>
-                </li>
-                </ul>
-            </div><!--menu-center-->
+            </div>
+            <div class="col-md-3">
+                <div class="header-s">
+                    <form method="GET" action="<?php echo curPageURL(); ?>search.php">
+                        <input type="search" class="input-s" name="s" placeholder="Bạn tìm kiếm gì nào"
+                               value="<?php if (isset($_GET['s'])): echo $_GET['s']; endif; ?>">
+                        <i class="fa fa-search" id="search-icon"></i>
+                    </form>
+                </div>
+            </div><!--header-->
         </div>
-    </div>
     </div>
 </section>
 <main id="main">

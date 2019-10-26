@@ -1,14 +1,13 @@
-<?php
-require_once('inc/ketnoi.php');
+<?php require_once('inc/ketnoi.php');
 $id = $_GET["id"];
 $taxonomy = $_GET['taxonomy'];
 if ($taxonomy == "product_cat") {
-    $sql = "SELECT * FROM products WHERE id_product='{$id}'";
+    $sql = "SELECT * FROM categories WHERE category_id='{$id}' AND taxonomy='product_cat'";
     $query = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
     $title = $row["title"];
 } else if ($taxonomy == "category") {
-    $sql = "SELECT * FROM posts WHERE id_post='{$id}'";
+    $sql = "SELECT * FROM categories WHERE category_id='{$id}' AND taxonomy='category'";
     $query = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
     $title = $row["title"];
@@ -30,13 +29,20 @@ if ($taxonomy == "product_cat") {
         </div>
     </div>
 </section><!--breadcrumb-->
-
-<?php
-if ($taxonomy == "product_cat") {
-    include('template-parts/content-product.php');
-} else if ($taxonomy == "category") {
-    include('template-parts/content-post.php');
-}
-?>
-
+<div class="category-product">
+    <div class="container">
+        <div class="col-md-3">
+            <?php include "sidebar/sidebar-product.php"; ?>
+        </div><!--sidevbar-->
+        <div class="col-md-9">
+            <?php
+            if ($taxonomy == "product_cat") {
+                include('template-parts/category-product.php');
+            } else if ($taxonomy == "category") {
+                include('template-parts/category-post.php');
+            }
+            ?>
+        </div><!--list-category-->
+    </div>
+</div>
 <?php require_once('template/footer.php'); ?>

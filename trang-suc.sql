@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2019 lúc 02:45 PM
+-- Thời gian đã tạo: Th10 26, 2019 lúc 07:33 PM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.9
 
@@ -157,7 +157,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id_post`, `title`, `excerpt`, `content`, `images`, `category_id`, `slug`, `user_id`, `is_active`, `created_at`, `updated_at`) VALUES
-(2, 'One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Android 10', 'One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Android 10One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Android 10', '<p>One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10</p>\r\n', '2880 x 18001571481691.jpg', 9, 'one-ui-20-beta-se-som-duoc-samsung-phat-hanh-dua-tren-android-10', '0', 1, '2019-10-19 17:34:59', '2019-10-19 17:34:59');
+(2, 'One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Android 10', 'One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Android 10One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Android 10', '<p>One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10</p>\r\n', 'Wall381571584487.png', 9, 'one-ui-20-beta-se-som-duoc-samsung-phat-hanh-dua-tren-android-10', 'admin', 1, '2019-10-19 17:34:59', '2019-10-19 17:34:59'),
+(3, 'One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Android 10', 'One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Android 10One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Android 10One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Android 10One UI 2.0 beta sẽ sớm được Samsung phát hành dựa trên Andro', '<p>One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10</p>\r\n', 'Screenshot (53)1572108112.png', 9, 'one-ui-20-beta-se-som-duoc-samsung-phat-hanh-dua-tren-android-101', 'admin', 0, '2019-10-26 23:41:52', '2019-10-26 23:41:52');
 
 -- --------------------------------------------------------
 
@@ -177,7 +178,7 @@ CREATE TABLE `products` (
   `is_hot` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `price_sale` int(11) NOT NULL,
-  `is_plus` int(11) NOT NULL,
+  `is_plus` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp()
@@ -188,7 +189,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id_product`, `title`, `excerpt`, `content`, `images`, `category_id`, `tags`, `post_type`, `is_hot`, `price`, `price_sale`, `is_plus`, `slug`, `created_at`, `updated_at`) VALUES
-(3, 'Sản phẩm 1', '', '<p>One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10</p>\r\n', 'e2d54cb51f464675e7e6d9c7640912361571476441.jpg', 5, 'khuyên tai', 'product', 1, 65000, 0, 0, 'san-pham-1', '2019-10-19 16:01:45', '2019-10-19 16:01:45');
+(3, 'Sản phẩm 1', '', '<p>One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10One UI 2.0 beta sẽ sớm được Samsung ph&aacute;t h&agrave;nh dựa tr&ecirc;n Android 10</p>\r\n', 'Screenshot (48)1572105140.png', 5, 'khuyên tai', 'product', 1, 65000, 0, '<p>Đặc điểm:</p>\r\n\r\n<p>Chất liệu</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'san-pham-1', '2019-10-19 16:01:45', '2019-10-19 16:01:45'),
+(6, 'Sản phẩm 2', 'Sản phẩm 2Sản phẩm 2Sản phẩm 2Sản phẩm 2', '<p>Sản phẩm 2Sản phẩm 2Sản phẩm 2</p>\r\n', 'e2d54cb51f464675e7e6d9c7640912361571647454.jpg', 3, 'khuyên tai', 'product', 1, 100000, 90000, '0', 'san-pham-2', '2019-10-20 22:28:40', '2019-10-20 22:28:40'),
+(7, 'Sản phẩm 3', 'Sản phẩm 2Sản phẩm 2Sản phẩm 2Sản phẩm 2', '<p>Sản phẩm 2&nbsp;Sản phẩm 2&nbsp;Sản phẩm 2&nbsp;Sản phẩm 2</p>\r\n', 'Screenshot (50)1572106849.png', 3, 'khuyên tai', 'product', 0, 65000, 0, '<p>Sản phẩm 2</p>\r\n\r\n<p>Sản phẩm 2</p>\r\n\r\n<p>Sản phẩm 2</p>\r\n\r\n<p>Sản phẩm 2</p>\r\n', 'san-pham-3', '2019-10-26 23:20:49', '2019-10-26 23:20:49');
 
 -- --------------------------------------------------------
 
@@ -334,13 +337,13 @@ ALTER TABLE `permision_users`
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `setting`
