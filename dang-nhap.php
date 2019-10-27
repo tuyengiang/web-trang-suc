@@ -9,27 +9,24 @@ if (isset($_POST["dang-nhap"])) {
         $error_array["email"] = "Email bạn nhập không đúng định dạng !!!";
     } else {
 
-        $sql = "SELECT email,password,id_status FROM users WHERE email='{$email}' AND password='{$matkhau}'";
+        $sql = "SELECT email,password,id_status,user_id FROM users WHERE email='{$email}' AND password='{$matkhau}'";
         $query = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
         if ($row == 0) {
             $error_array["error"] = "Tài khoản hoặc mật khẩu không đúng !!! Mời nhập lại.";
         } else {
             $status = $row['id_status'];
-            if ($status == "5") {
+            $id_user = $row['user_id'];
+            if ($status == "6") {
                 $_SESSION["email"] = $email;
                 $_SESSION["status"] = $status;
-                header('location:admin/');
+                $_SESSION["user_id"] = $id_user;
+                header(('location:cart/'));
             } else {
-                if (isset($_SESSION["cart"]) && isset($_SESSION["soluong"])) {
-                    $_SESSION["email"] = $email;
-                    $_SESSION["status"] = $status;
-                    header('location:cart/thanh-toan.php');
-                } else {
-                    $_SESSION["email"] = $email;
-                    $_SESSION["status"] = $status;
-                    header('location:user/user.php');
-                }
+                $_SESSION["email"] = $email;
+                $_SESSION["status"] = $status;
+                $_SESSION["user_id"] = $id_user;
+                header('location:admin/');
             }
         }
     }

@@ -14,9 +14,9 @@ if ($conn) {
 function check_login()
 {
     global $_SESSION;
-    $user = 'location:' . curPageURL() . 'dang-nhap.php';
-    if (empty($_SESSION["email"])) {
-        header($user);
+    $user = curPageURL() . 'dang-nhap.php';
+    if (!isset($_SESSION['email'])) {
+        header('location:' . $user);
     }
 }
 
@@ -109,15 +109,15 @@ function showCategories($categories, $parent_id = 0, $char = '', $stt = 0)
         } else if ($stt == 2) {
             // là cấp 3
         }
-        echo '<ul class="submenu">';
+        echo ' <ul class="submenu" > ';
         foreach ($cate_child as $key => $item) {
             // Hiển thị tiêu đề chuyên mục
-            echo '<li><a href="category.php?id=' . $item['category_id'] . '&taxonomy=product_cat">' . $item['title'] . '</a>';
+            echo '<li ><a href = "category.php?id=' . $item['category_id'] . '&taxonomy=product_cat" > ' . $item['title'] . ' </a > ';
             // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
-            showCategories($categories, $item['category_id'], $char . '|---', ++$stt);
-            echo '</li>';
+            showCategories($categories, $item['category_id'], $char . ' | ---', ++$stt);
+            echo ' </li > ';
         }
-        echo '</ul>';
+        echo '</ul > ';
     }
 }
 
@@ -151,15 +151,15 @@ function showCategoriesPost($categories1, $parent_id = 0, $char = '', $stt = 0)
         } else if ($stt == 2) {
             // là cấp 3
         }
-        echo '<ul class="submenu">';
+        echo ' <ul class="submenu" > ';
         foreach ($cate_child as $key => $item) {
             // Hiển thị tiêu đề chuyên mục
-            echo '<li><a href="category.php?id=' . $item['category_id'] . '&taxonomy=category">' . $item['title'] . '</a>';
+            echo '<li ><a href = "category.php?id=' . $item['category_id'] . '&taxonomy=category" > ' . $item['title'] . ' </a > ';
             // Tiếp tục đệ quy để tìm chuyên mục con của chuyên mục đang lặp
-            showCategories($categories1, $item['category_id'], $char . '|---', ++$stt);
-            echo '</li>';
+            showCategories($categories1, $item['category_id'], $char . ' | ---', ++$stt);
+            echo ' </li > ';
         }
-        echo '</ul>';
+        echo '</ul > ';
     }
 }
 

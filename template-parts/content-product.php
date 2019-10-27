@@ -1,6 +1,50 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $id = isset($_POST['id']) ? $_POST['id'] : NULL;
+    $title = isset($_POST['title']) ? $_POST['title'] : NULL;
+    $price = isset($_POST['price']) ? $_POST['price'] : NULL;
+    $images = isset($_POST['images']) ? $_POST['images'] : NULL;
+    $count = isset($_POST['count']) ? $_POST['count'] : NULL;
+    $active = '0';
+    $array = array(
+        'id' => $id,
+        'title' => $title,
+        'price' => $price,
+        'images' => $images,
+        'count' => $count,
+        'active' => $active
+    );
+
+    $args[] = $array;
+    $rs = empty($_SESSION['cart']) ? [] : $_SESSION['cart'];
+    foreach ($args as $i) {
+        $id = $i['id'];
+        if (!isset($rs[$id])) {
+            $rs[$id] = [];
+        }
+        $rs[$id][] = $i;
+    }
+    $_SESSION['cart'] = $rs;
+    $message = "Thêm sản phẩm vào giỏ hàng thành công !!!";
+}
+?>
 <section id="product-content">
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <?php if (!empty($message)): ?>
+                    <div class="alert alert-success showHidden">
+                        <?php echo $message; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <script>
+                (function ($) {
+                    setTimeout(function () {
+                        $('.showHidden').slideUp();
+                    }, 3000);
+                })(jQuery);
+            </script>
             <div class="col-md-6">
                 <div class="product-gallery">
                     <?php
@@ -69,6 +113,14 @@
                     <form method="post">
                         <div class="form-group">
                             <label>Số lượng</label>
+                            <input type="hidden" name="title" value="<?php echo $row['title']; ?>">
+                            <input type="hidden" name="id" value="<?php echo $row['id_product']; ?>">
+                            <input type="hidden" name="price" value="<?php if ($row['price_sale'] == 0) {
+                                echo $row['price'];
+                            } else {
+                                echo $row['price_sale'] . " " . $row['price'];
+                            } ?>">
+                            <input type="hidden" name="images" value="<?php echo $row['images']; ?>">
                             <input type="number" min="1" name="count" value="1" class="form-control input-number">
                         </div>
                         <div class="form-group">

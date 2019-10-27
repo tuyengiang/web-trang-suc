@@ -138,6 +138,26 @@ div#datatable_wrapper {
     }
 }
 
-.glyphicon{
+.glyphicon {
     float: left;
+}
+
+.avatar-product-order img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+span.price-sale {
+    text-decoration: line-through;
+    padding: 0px 5px 0px 5px;
+}
+
+span.price-regular-under {
+    color: #ff3333;
+    padding: 0px 5px 0px 5px;
+}
+
+span.price-regular {
+    color: #ff3333;
 }

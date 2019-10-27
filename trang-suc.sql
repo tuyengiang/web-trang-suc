@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2019 lúc 07:33 PM
+-- Thời gian đã tạo: Th10 27, 2019 lúc 02:11 PM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.9
 
@@ -44,13 +44,27 @@ CREATE TABLE `cart` (
   `id_cart` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `count` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
-  `id_images` int(11) NOT NULL,
+  `price` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `id_images` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
   `is_active` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cart`
+--
+
+INSERT INTO `cart` (`id_cart`, `title`, `count`, `price`, `id_images`, `user_id`, `is_active`, `name`, `email`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'Sản phẩm 2', 1, '90000 100000', 'e2d54cb51f464675e7e6d9c7640912361571647454.jpg', 5, 1, 'Tuyển Giảng', 'nguyentuyengiangbn@gmail.com', 'Hà Nội, Hà Nội', '2019-10-27 19:15:48', '2019-10-27 19:15:48'),
+(2, 'Sản phẩm 2', 1, '90000 100000', 'e2d54cb51f464675e7e6d9c7640912361571647454.jpg', 5, 1, 'wp', 'nguyentuyengiangbn@gmail.com', 'Hà Nội, Hà Nội', '2019-10-27 19:16:23', '2019-10-27 19:16:23'),
+(3, 'Sản phẩm 1', 1, '65000', 'Screenshot (48)1572105140.png', 5, 0, 'wp', 'nguyentuyengiangbn@gmail.com', 'Hà Nội, Hà Nội', '2019-10-27 19:16:23', '2019-10-27 19:16:23'),
+(4, 'Sản phẩm 2', 1, '90000 100000', 'e2d54cb51f464675e7e6d9c7640912361571647454.jpg', 5, 0, 'Tuyển Giảng', 'nguyentuyengiangbn@gmail.com', 'Hà Nội, Hà Nội', '2019-10-27 19:21:43', '2019-10-27 19:21:43'),
+(5, 'Sản phẩm 2', 1, '90000 100000', 'e2d54cb51f464675e7e6d9c7640912361571647454.jpg', 5, 0, 'Tuyển Giảng', 'nguyentuyengiangbn@gmail.com', 'Hà Nội, Hà Nội', '2019-10-27 19:22:15', '2019-10-27 19:22:15');
 
 -- --------------------------------------------------------
 
@@ -227,7 +241,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `username`, `password`, `images`, `id_status`) VALUES
 (1, 'Trương Lệ 1', 'lemom2711@gmail.com', 'admin', 'b658ca3fb20ffc865ec378d941994c21', 'Wall881571486009.png', 5),
-(3, 'Viet Anh', 'cuongdcdev@gmail.com', 'tuyengiang', 'b658ca3fb20ffc865ec378d941994c21', 'Wall1231571485710.png', 5);
+(3, 'Viet Anh', 'cuongdcdev@gmail.com', 'tuyengiang', 'b658ca3fb20ffc865ec378d941994c21', 'Wall1231571485710.png', 5),
+(5, 'Nguyễn Tuyển Giảng', 'nguyentuyengiangbn@gmail.com', 'tuyengiang', 'ceea23519f6f86ad67e9f798bf8002cb', '', 6);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -307,7 +322,7 @@ ALTER TABLE `attributes`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `categories`
@@ -355,7 +370,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

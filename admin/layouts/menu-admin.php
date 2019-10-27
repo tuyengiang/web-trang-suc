@@ -75,9 +75,12 @@ if (isset($_SESSION['email'])) {
 
                     <li><a><i class="fa fa-shopping-cart"></i> Đơn hàng<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="/">Tất cả đơn hàng</a></li>
-                            <li><a href="/">Đơn đã bán</a></li>
-                            <li><a href="/">Đơn chờ xử lý</a></li>
+                            <li><a href="<?php echo curPageURL() . 'admin/order/order-all.php'; ?>">Tất cả đơn hàng</a>
+                            </li>
+                            <li><a href="<?php echo curPageURL() . 'admin/order/order-success.php'; ?>">Đơn đã bán</a>
+                            </li>
+                            <li><a href="<?php echo curPageURL() . 'admin/order/order-danger.php'; ?>">Đơn chờ xử lý</a>
+                            </li>
                         </ul>
                     </li><!--product-->
 

@@ -167,6 +167,7 @@ section#header-main .menu-summary ul li a {
     margin-left: 20px;
     color: #fff;
     cursor: pointer;
+    position: relative;
 }
 
 #header .header-cart a {
@@ -854,4 +855,78 @@ section#single-post .post-content--show {
     font-family: myfont;
     color: #000;
     font-size: 16px;
+}
+
+/**cart**/
+.header-cart a i {
+    font-size: 18px;
+}
+
+.cart-item {
+    width: 20px;
+    height: 20px;
+    background: #fff300 !important;
+    position: absolute;
+    line-height: 20px;
+    border-radius: 50%;
+    color: #000;
+    font-family: myfont;
+    font-size: 12px;
+    font-weight: 700;
+    top: -1px;
+    right: -4px;
+}
+
+/**cart**/
+.cart-title {
+    display: block;
+    font-family: myfont;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.btn-checkout a {
+    background: linear-gradient(90deg, rgba(253, 29, 29, 1) 0%, rgba(131, 58, 180, 1) 100%, rgba(252, 176, 69, 1) 100%);
+    padding: 5px 20px 5px 20px;
+    border-radius: 50px;
+    color: #fff;
+    font-family: myfont;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.btn-checkout {
+    text-align: right;
+}
+
+.cart-avatar img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.form-order {
+    border: 2px solid rgba(253, 29, 29, 1);
+    padding: 20px;
+}
+
+.form-checkout {
+    padding: 20px;
+}
+
+.form-checkout h2.form-order h2 {
+    font-weight: 700;
+    font-family: myfont;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+button.btn.btn-success.btn-store {
+    background: linear-gradient(90deg, rgba(253, 29, 29, 1) 0%, rgba(131, 58, 180, 1) 100%, rgba(252, 176, 69, 1) 100%);
+    border: 0px;
+    border-radius: 50px;
+    font-family: myfont;
+    font-weight: 700;
 }
